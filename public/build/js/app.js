@@ -1,13 +1,38 @@
-var app = angular.module('app', ['ngRoute', 'angular-oauth2', 'app.controllers', 'app.services', 'app.filters', 'ui.bootstrap.modal', 'http-auth-interceptor', 'app.directives'])
+var app = angular.module('app', ['ngRoute', 'angular-oauth2', 'app.controllers', 'app.services', 'app.filters', 'ui.bootstrap', 'http-auth-interceptor', 'app.directives'])
 
 angular.module('app.controllers', ['ngMessages', 'angular-oauth2'])
 angular.module('app.filters', [])
-angular.module('app.services', ['ngResource'])
 angular.module('app.directives', [])
+angular.module('app.services', ['ngResource'])
 
-app.provider('appConfig', function() {
+app.provider('appConfig', ['$httpParamSerializerProvider', function($httpParamSerializerProvider) {
     var config = {
-        baseUrl: 'http://localhost:8000'
+        baseUrl: 'http://localhost:8000',
+        utils: {
+            transformRequest: function(data) {
+                if (angular.isObject(data)) {
+                    return $httpParamSerializerProvider.$get()(data)
+                }
+
+                return data
+            },
+            transformResponse: function(data, headers) {
+                var headersGetter = headers()
+
+                if (headersGetter['content-type'] == 'application/json' ||
+                    headersGetter['content-type'] == 'text/json'
+                ) {
+                    var dataJson = JSON.parse(data)
+                    if (dataJson.hasOwnProperty('data')) {
+                        dataJson = dataJson.data
+                    }
+
+                    return dataJson
+                }
+
+                return data
+            }
+        }
     }
 
     return {
@@ -16,26 +41,18 @@ app.provider('appConfig', function() {
             return config
         }
     }
-})
+}])
 
 app.config(['$routeProvider', '$httpProvider', 'OAuthProvider', 'OAuthTokenProvider', 'appConfigProvider', function($routeProvider, $httpProvider, OAuthProvider, OAuthTokenProvider, appConfigProvider) {
-    $httpProvider.defaults.transformResponse = function(data, headers) {
-        var headersGetter = headers()
-        
-        if (headersGetter['content-type'] == 'application/json' ||
-            headersGetter['content-type'] == 'text/json'
-        ) {
-            var dataJson = JSON.parse(data)
-            
-            if (dataJson.hasOwnProperty('data')) {
-                dataJson = dataJson.data
-            }
+    $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8'
+    $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8'
+    $httpProvider.defaults.transformRequest = appConfigProvider.config.utils.transformRequest
+    $httpProvider.defaults.transformResponse = appConfigProvider.config.utils.transformResponse
+    $httpProvider.interceptors.splice(0, 1)
+    $httpProvider.interceptors.splice(0, 1)
 
-            return dataJson
-        }
+    $httpProvider.interceptors.push('oauthFixInterceptor')
 
-        return data
-    }
     $routeProvider
         .when('/login', {
             templateUrl: 'build/views/login.html',
@@ -103,14 +120,15 @@ app .run(['$rootScope', '$location', '$http', '$modal', 'httpBuffer', 'OAuth', f
 
         // Refresh token when a `invalid_token` error occurs.
         if ('access_denied' === data.rejection.data.error) {
-            httpBuffer.append(data.rejection.config.data.deferred)
+            httpBuffer.append(data.rejection.config, data.deferred)
             if (!$rootScope.loginModalOpened) {
                 var modalInstance = $modal.open({
-                    templateUrl: 'build/views/template/loginModal.html',
+                    templateUrl: 'build/views/templates/loginModal.html',
                     controller: 'LoginModalController'
                })
-               $rootScope.loginModalOpened = true
+               $rootScope.loginModalOpened = true               
             }
+            return;
         }
 
         // Redirect to `/login` with the `error_reason`.

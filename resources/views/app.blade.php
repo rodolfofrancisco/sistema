@@ -75,7 +75,7 @@
 		<script src="{{ asset('build/js/vendor/angular-resource.min.js') }}"></script>
 		<script src="{{ asset('build/js/vendor/angular-animate.min.js') }}"></script>
 		<script src="{{ asset('build/js/vendor/angular-messages.min.js') }}"></script>
-		<script src="{{ asset('build/js/vendor/ui-bootstrap.min.js') }}"></script>
+		<script src="{{ asset('build/js/vendor/ui-bootstrap-tpls.min.js') }}"></script>
 		<script src="{{ asset('build/js/vendor/navbar.min.js') }}"></script>
 		<script src="{{ asset('build/js/vendor/angular-cookies.min.js') }}"></script>
 		<script src="{{ asset('build/js/vendor/query-string.js') }}"></script>
@@ -98,6 +98,7 @@
 
 		<!-- SERVICES -->
 		<script src="{{ asset('build/js/services/user.js') }}"></script>
+		<script src="{{ asset('build/js/services/oauthFixInterceptor.js') }}"></script>
 
 		<!-- FILTERS -->
 		<script src="{{ asset('build/js/filters/date-br.js') }}"></script>

@@ -34,7 +34,7 @@ class UserController extends Controller {
      */
     public function index()
     {
-        return $this->repository->all();
+        return $this->repository->paginate();
     }
 
     

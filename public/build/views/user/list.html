@@ -14,7 +14,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="o in users">
+                            <tr dir-paginate="o in users | itemsPerPage: usersPerPage" total-items="totalUsers" current-page="pagination.current" >
                                 <td>{{o.name}}</td>
                                 <td>{{o.email}}</td>
                                 <td>{{o.created_at | dateBr}}</td>
@@ -25,6 +25,7 @@
                             </tr>
                         </tbody>
                     </table>
+                    <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
 				</div>
 			</div>
 		</div>

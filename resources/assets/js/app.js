@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute', 'angular-oauth2', 'app.controllers', 'app.services', 'app.filters', 'ui.bootstrap', 'http-auth-interceptor', 'app.directives'])
+var app = angular.module('app', ['ngRoute', 'angular-oauth2', 'app.controllers', 'app.services', 'app.filters', 'ui.bootstrap', 'http-auth-interceptor', 'app.directives', 'angularUtils.directives.dirPagination', 'mgcrea.ngStrap.navbar'])
 
 angular.module('app.controllers', ['ngMessages', 'angular-oauth2'])
 angular.module('app.filters', [])
@@ -23,9 +23,9 @@ app.provider('appConfig', ['$httpParamSerializerProvider', function($httpParamSe
                     headersGetter['content-type'] == 'text/json'
                 ) {
                     var dataJson = JSON.parse(data)
-                    if (dataJson.hasOwnProperty('data')) {
+                    /*if (dataJson.hasOwnProperty('data')) {
                         dataJson = dataJson.data
-                    }
+                    }*/
 
                     return dataJson
                 }
@@ -72,7 +72,8 @@ app.config(['$routeProvider', '$httpProvider', 'OAuthProvider', 'OAuthTokenProvi
         })
         .when('/usuario', {
             templateUrl: 'build/views/user/list.html',
-            controller: 'UserListController'
+            controller: 'UserListController',
+            title: 'Usuários'
         })
         .when('/usuario/new', {
             templateUrl: 'build/views/user/new.html',
@@ -110,6 +111,10 @@ app .run(['$rootScope', '$location', '$http', '$modal', 'httpBuffer', 'OAuth', f
                 $location.path('login')
             }
         }
+    })
+
+    $rootScope.$on('$routeChangeSuccess', function(event, current, previous) {
+        $rootScope.pageTitle = current.$$route.title
     })
 
     $rootScope.$on('oauth:error', function(event, data) {

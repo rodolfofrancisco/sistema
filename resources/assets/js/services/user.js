@@ -7,6 +7,9 @@ angular.module('app.services')
         get: {
             method: 'GET'
         },
+        query: {
+            isArray: false
+        },
         authenticated: {
             url: appConfig.baseUrl + '/user/authenticated',
             method: 'GET'

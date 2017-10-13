@@ -33,7 +33,10 @@ config.build_path_css = config.build_path + '/css'
 config.build_vendor_path_css = config.build_path_css + '/vendor'
 config.vendor_path_css = [
     config.bower_path + '/bootstrap/dist/css/bootstrap.min.css',
-    config.bower_path + '/bootstrap/dist/css/bootstrap-theme.min.css'
+    config.bower_path + '/font-awesome/css/font-awesome.min.css',
+    config.bower_path + '/Ionicons/css/ionicons.min.css',
+    config.bower_path + '/admin-lte/dist/css/AdminLTE.min.css',
+    config.bower_path + '/admin-lte/dist/css/skins/_all-skins.min.css'
 ]
 
 config.build_path_html = config.build_path + '/views'

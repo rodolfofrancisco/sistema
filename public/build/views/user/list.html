@@ -1,33 +1,43 @@
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading">Listagem de Usuários</div>
-				<div class="panel-body">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th>Usuário</th>
-                                <th>Data de Criação</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr dir-paginate="o in users | itemsPerPage: usersPerPage" total-items="totalUsers" current-page="pagination.current" >
-                                <td>{{o.name}}</td>
-                                <td>{{o.email}}</td>
-                                <td>{{o.created_at | dateBr}}</td>
-                                <td>
-                                    <a ng-href="#/usuario/{{o.id}}/editar">Editar</a> | 
-                                    <a ng-href="#/usuario/{{o.id}}/remove">Excluir</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="container">
+    <section class="content-header">
+        <h1>
+            Usuários
+            <small>Sistema</small>
+        </h1>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Usuários do Sistema</h3>
+                    </div>
+                    <div class="box-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Usuário</th>
+                                    <th>Data de Criação</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr dir-paginate="o in users | itemsPerPage: usersPerPage" total-items="totalUsers" current-page="pagination.current" >
+                                    <td>{{o.name}}</td>
+                                    <td>{{o.email}}</td>
+                                    <td>{{o.created_at | dateBr}}</td>
+                                    <td>
+                                        <a ng-href="#/usuario/{{o.id}}/edit">Editar</a> | 
+                                        <a ng-href="#/usuario/{{o.id}}/remove">Excluir</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>

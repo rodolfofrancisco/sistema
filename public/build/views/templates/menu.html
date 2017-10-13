@@ -1,47 +1,34 @@
-<header class="header-global" ng-controller="MenuController">
-        <div class="top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-2">
-                        <a ng-href="#/home" class="brand">
-                            <img src="build/images/logo.png" alt=""/>
-                            <span class="text">Sistema</span>
-                        </a> <!-- /brand -->
-                    </div>
-                    <div class="col-sm-8">
-                        <menu class="menu" menu-activated>
-                            <li data-match-route="/home">
-                                <a ng-href="#/home">
-                                    <i class="fa fa-home"></i> Home
-                                </a>
-                            </li>
-                            <li data-match-route="/usuario">
-                                <a  ng-href="#/usuario">
-                                    <i class="flaticon-office-worker2"></i> Usuários
-                                </a>
-                            </li>
-                        </menu> <!-- /menu -->
-                    </div>
-                    <div class="col-sm-2">
-                        <a href="" class="userinfo">
-                            <i class="avatar flaticon-user7"></i>
-                            Olá, {{ user.name }}
-                        </a>
-                        <a ng-href="/#logout" class="userinfo">
-                            <i class="fa fa-sign-out"></i>
-                            Sair
-                        </a>
-                    </div>
-                </div>
+<header class="main-header"  bs-navbar ng-controller="MenuController">
+    <nav class="navbar navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a ng-href="#/home" class="navbar-brand"><b>Sist</b>EMA</a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                <i class="fa fa-bars"></i>
+                </button>
             </div>
-        </div> <!-- /top -->
-        <div class="bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <h1 class="h3">{{ pageTitle }}</h1>
-                    </div>
-                </div>
+
+            <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li data-match-route="/home"><a href="#/home">Home</a></li>
+                    <li data-match-route="/usuario"><a href="#/usuario">Usuário</a></li>
+                </ul>
             </div>
-        </div> <!-- /bottom -->
-    </header> <!-- /header-global -->
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown user user-menu" dropdown="">
+                        <a ng-href="#/home" class="dropdown-toggle" data-toggle="dropdown" role="button" dropdown-toggle="">
+                            <span class="hidden-xs">{{user.name}}</span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a ng-href="#/logout">Sair</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

@@ -7,28 +7,39 @@
 	<title>Sistema</title>
 	@if(Config::get('app.debug'))
 		<link href="{{ asset('build/css/app.css') }}" rel="stylesheet" />
-		<link href="{{ asset('build/css/components.css') }}" rel="stylesheet" />
-		<link href="{{ asset('build/css/flaticon.css') }}" rel="stylesheet" />
-		<link href="{{ asset('build/css/font-awesome.css') }}" rel="stylesheet" />
+
+		<link href="{{ asset('build/css/vendor/bootstrap.min.css') }}" rel="stylesheet" />
+		<link href="{{ asset('build/css/vendor/font-awesome.min.css') }}" rel="stylesheet" />
+		<link href="{{ asset('build/css/vendor/ionicons.min.css') }}" rel="stylesheet" />
+		<link href="{{ asset('build/css/vendor/AdminLTE.min.css') }}" rel="stylesheet" />
+		<link href="{{ asset('build/css/vendor/_all-skins.min.css') }}" rel="stylesheet" />
 	@else
 		<link href="{{ elixir('css/all.css') }}" rel="stylesheet" />
 	@endif
 	
-	<!-- Fonts -->
-	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
-
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body>
-	<load-template url="/build/views/templates/menu.html"></load-template>
-	
-	<div ng-view>
+<body class="hold-transition skin-black layout-top-nav">
+	<div class="wrapper">
+		<load-template url="/build/views/templates/menu.html"></load-template>
 
+		<div class="content-wrapper">
+    		<div class="container">
+				<div ng-view>
+
+				</div>
+			</div>
+		</div>
+
+		<footer class="main-footer">
+			<div class="container">
+				<div class="pull-right hidden-xs">
+					<b>Version</b> 2.4.0
+				</div>
+				<strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+				reserved.
+			</div>
+		</footer>
 	</div>
 
 	<!-- Scripts -->

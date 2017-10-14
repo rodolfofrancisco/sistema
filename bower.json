@@ -24,6 +24,7 @@
     "angular-oauth2": "^4.1.1",
     "angular-http-auth": "^1.5.0",
     "angularUtils-pagination": "angular-utils-pagination#^0.11.1",
-    "admin-lte": "^2.4.2"
+    "admin-lte": "^2.4.2",
+    "components-font-awesome": "^4.7.0"
   }
 }

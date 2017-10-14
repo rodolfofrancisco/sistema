@@ -4,22 +4,23 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Sistema</title>
+	<title>MultiSchool</title>
 	@if(Config::get('app.debug'))
 		<link href="{{ asset('build/css/app.css') }}" rel="stylesheet" />
 
 		<link href="{{ asset('build/css/vendor/bootstrap.min.css') }}" rel="stylesheet" />
-		<link href="{{ asset('build/css/vendor/font-awesome.min.css') }}" rel="stylesheet" />
 		<link href="{{ asset('build/css/vendor/ionicons.min.css') }}" rel="stylesheet" />
 		<link href="{{ asset('build/css/vendor/AdminLTE.min.css') }}" rel="stylesheet" />
 		<link href="{{ asset('build/css/vendor/_all-skins.min.css') }}" rel="stylesheet" />
+		<link href="{{ asset('build/css/vendor/font-awesome.min.css') }}" rel="stylesheet" />
+		
 	@else
 		<link href="{{ elixir('css/all.css') }}" rel="stylesheet" />
 	@endif
 	
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic" />	
 </head>
-<body class="hold-transition skin-black layout-top-nav">
+<body class="hold-transition skin-red layout-top-nav">
 	<div class="wrapper">
 		<load-template url="/build/views/templates/menu.html"></load-template>
 
@@ -59,7 +60,7 @@
 		<script src="{{ asset('build/js/vendor/dirPagination.js') }}"></script>
 
 		<script src="{{ asset('build/js/app.js') }}"></script>
-
+		
 		<!-- DIRECTIVES -->
 		<script src="{{asset('build/js/directives/loginForm.js')}}"></script>
 		<script src="{{asset('build/js/directives/loadTemplate.js')}}"></script>

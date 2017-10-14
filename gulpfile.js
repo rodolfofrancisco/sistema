@@ -33,7 +33,7 @@ config.build_path_css = config.build_path + '/css'
 config.build_vendor_path_css = config.build_path_css + '/vendor'
 config.vendor_path_css = [
     config.bower_path + '/bootstrap/dist/css/bootstrap.min.css',
-    config.bower_path + '/font-awesome/css/font-awesome.min.css',
+    config.bower_path + '/components-font-awesome/css/font-awesome.min.css',
     config.bower_path + '/Ionicons/css/ionicons.min.css',
     config.bower_path + '/admin-lte/dist/css/AdminLTE.min.css',
     config.bower_path + '/admin-lte/dist/css/skins/_all-skins.min.css'
@@ -48,6 +48,11 @@ gulp.task('copy-font', function() {
         config.assets_path + '/fonts/**/*'
     ])
         .pipe(gulp.dest(config.build_path_font))
+        .pipe(liveReload())
+    gulp.src([
+        config.bower_path + '/components-font-awesome/fonts/**/*'
+    ])
+        .pipe(gulp.dest(config.build_path_css + '/fonts'))
         .pipe(liveReload())
 })
 

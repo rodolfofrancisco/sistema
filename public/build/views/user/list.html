@@ -1,19 +1,19 @@
 <div class="container">
     <section class="content-header">
         <h1>
-            Usuários
-            <small>Sistema</small>
+            <i class="fa fa-user-circle-o"></i> Usuários
+            <small>Acesso ao Sistema</small>
+            <a href="/#usuario/new" title="Cadastrar" class="btn btn-success pull-right" data-ajax="normal">
+                <i class="fa fa-plus"></i> Cadastrar
+            </a>
         </h1>
     </section>
     <section class="content">
         <div class="row">
             <div class="col-xs-12">
-                <div class="box">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Usuários do Sistema</h3>
-                    </div>
+                <div class="box box-danger">
                     <div class="box-body">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" id="tableUsers" ui-jq="dataTable">
                             <thead>
                                 <tr>
                                     <th>Nome</th>
@@ -28,13 +28,30 @@
                                     <td>{{o.email}}</td>
                                     <td>{{o.created_at | dateBr}}</td>
                                     <td>
-                                        <a ng-href="#/usuario/{{o.id}}/edit">Editar</a> | 
-                                        <a ng-href="#/usuario/{{o.id}}/remove">Excluir</a>
+                                        <ul class="actions">
+                                            <li>
+                                                <a href="#/usuario" title="" data-toggle="tooltip" data-placement="top" data-original-title="Visualizar" data-ajax="normal">
+                                                    <i class="fa fa-eye"></i> 
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a ng-href="#/usuario/{{o.id}}/edit" title="Editar" class="text-warning">
+                                                    <i class="fa fa-pencil"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a ng-href="#/usuario/{{o.id}}/remove" title="Excluir" class="text-danger">
+                                                    <i class="fa fa-remove"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                        <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+                        <div class="pull-right">
+                            <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+                        </div>
                     </div>
                 </div>
             </div>

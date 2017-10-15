@@ -1,5 +1,5 @@
 angular.module('app.controllers')
-.controller('UserListController', ['$scope', 'User', function($scope, User) {
+.controller('UserListController', ['$scope', 'User', '$modal', function($scope, User, $modal) {
     $scope.users = []
     $scope.totalUsers = 0
     $scope.usersPerPage = 15
@@ -16,6 +16,20 @@ angular.module('app.controllers')
         User.query({page: pageNumber}, function(data) {
             $scope.users = data.data
             $scope.totalUsers = data.total
+        })
+    }
+
+    $scope.remove = function(id) {
+        var modalInstance = $modal.open({
+            templateUrl: 'build/views/user/remove.html',
+            controller: 'UserRemoveController',
+            backdrop  : 'static',
+            keyboard  : false,
+            resolve: {
+                removeId: function () {
+                    return id
+                }
+            }
         })
     }
 

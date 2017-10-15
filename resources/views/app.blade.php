@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>MultiSchool</title>
+	<title>multischool</title>
 	@if(Config::get('app.debug'))
 		<link href="{{ asset('build/css/app.css') }}" rel="stylesheet" />
 
@@ -35,10 +35,13 @@
 		<footer class="main-footer">
 			<div class="container">
 				<div class="pull-right hidden-xs">
-					<b>Version</b> 2.4.0
+					
 				</div>
-				<strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-				reserved.
+				<strong>Copyright &copy; 2017-2018 
+					<a ng-href="#/home" class="home-logo">
+                    	<b class="blue">multi</b>
+                    	<b class="red">school</b>
+                	</a>.</strong> Todos os direitos reservados.
 			</div>
 		</footer>
 	</div>

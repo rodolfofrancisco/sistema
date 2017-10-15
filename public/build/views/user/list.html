@@ -1,8 +1,10 @@
 <div class="container">
     <section class="content-header">
         <h1>
-            <i class="fa fa-user-circle-o"></i> Usuários
-            <small>Acesso ao Sistema</small>
+            <span class="title-header">
+                <i class="fa fa-user-circle-o"></i> Usuários
+                <small>Acesso ao Sistema</small>
+            </span>
             <a href="/#usuario/new" title="Cadastrar" class="btn btn-success pull-right" data-ajax="normal">
                 <i class="fa fa-plus"></i> Cadastrar
             </a>
@@ -17,8 +19,8 @@
                             <thead>
                                 <tr>
                                     <th>Nome</th>
-                                    <th>Usuário</th>
-                                    <th>Data de Criação</th>
+                                    <th>E-mail</th>
+                                    <th>Data de Cadastro</th>
                                     <th>Ações</th>
                                 </tr>
                             </thead>
@@ -26,7 +28,7 @@
                                 <tr dir-paginate="o in users | itemsPerPage: usersPerPage" total-items="totalUsers" current-page="pagination.current" >
                                     <td>{{o.name}}</td>
                                     <td>{{o.email}}</td>
-                                    <td>{{o.created_at | dateBr}}</td>
+                                    <td>{{o.created_at | date:'dd-M-yyyy H:mm:ss'}}</td>
                                     <td>
                                         <ul class="actions">
                                             <li>
@@ -40,7 +42,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a ng-href="#/usuario/{{o.id}}/remove" title="Excluir" class="text-danger">
+                                                <a title="Excluir" class="text-danger" ng-click="remove(o.id)">
                                                     <i class="fa fa-remove"></i>
                                                 </a>
                                             </li>

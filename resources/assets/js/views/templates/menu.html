@@ -2,7 +2,9 @@
     <nav class="navbar navbar-static-top">
         <div class="container">
             <div class="navbar-header">
-                <a ng-href="#/home" class="navbar-brand"><b>Multi</b>SCHOOL</a>
+                <a ng-href="#/home" class="navbar-brand home-logo">
+                    <img src="../../build/images/logo.png">
+                </a>
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                 <i class="fa fa-bars"></i>
                 </button>
@@ -10,7 +12,11 @@
 
             <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li data-match-route="/home"><a href="#/home">Home</a></li>
+                    <li data-match-route="/home">
+                        <a href="#/home">
+                            <i class="fa fa-home"></i> Home
+                        </a>
+                    </li>
                     <li data-match-route="/usuario">
                         <a href="#/usuario">
                             <i class="fa fa-user-circle-o"></i> Usuário
@@ -28,7 +34,7 @@
                         <ul class="dropdown-menu" role="menu">
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="/SOHO/public/data/sys-user/edit-me" title="Alterar Meus Dados" id="Cadastros.SysUser.Controller" class="btn btn-default btn-flat" data-ajax="ajax">Alterar Meus Dados</a>										
+                                    <a href="/SOHO/public/data/sys-user/edit-me" title="Alterar Meus Dados" id="Cadastros.SysUser.Controller" class="btn btn-default btn-flat" data-ajax="ajax">Meu Perfil</a>										
                                 </div>
                                 <div class="pull-right">
                                     <a href="#/logout" title="Sair" class="btn btn-default btn-flat">Sair</a>										

@@ -59,13 +59,13 @@ class UserController extends Controller {
     {
         $result = $this->repository->find($id);
 
-        if (isset($result['data']) && count($result['data'] > 0)) {
+        /*if (isset($result['data']) && count($result['data'] > 0)) {
             $result = [
                 'data' => array_shift($result['data'])
             ];
-        }
+        }*/
 
-        return $result;
+        return $result['data'];
     }
 
     /**

@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>multischool</title>
+	<title>MultiSchool</title>
 	@if(Config::get('app.debug'))
 		<link href="{{ asset('build/css/app.css') }}" rel="stylesheet" />
 
@@ -18,7 +18,7 @@
 		<link href="{{ elixir('css/all.css') }}" rel="stylesheet" />
 	@endif
 	
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic" />	
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" media="screen" rel="stylesheet" type="text/css" />
 </head>
 <body class="hold-transition skin-red layout-top-nav">
 	<div class="wrapper">
@@ -37,11 +37,10 @@
 				<div class="pull-right hidden-xs">
 					
 				</div>
-				<strong>Copyright &copy; 2017-2018 
-					<a ng-href="#/home" class="home-logo">
-                    	<b class="blue">multi</b>
-                    	<b class="red">school</b>
-                	</a>.</strong> Todos os direitos reservados.
+				Copyright &copy; 2018 
+				<a ng-href="#/home">
+					MultiSchool
+				</a>. Todos os direitos reservados.
 			</div>
 		</footer>
 	</div>
@@ -61,6 +60,8 @@
 		<script src="{{ asset('build/js/vendor/angular-oauth2.min.js') }}"></script>
 		<script src="{{ asset('build/js/vendor/http-auth-interceptor.js') }}"></script>
 		<script src="{{ asset('build/js/vendor/dirPagination.js') }}"></script>
+		<script src="{{ asset('build/js/vendor/angular-locale_pt-br.js') }}"></script>
+		<script src="{{ asset('build/js/vendor/meiomask.min.js') }}"></script>
 
 		<script src="{{ asset('build/js/app.js') }}"></script>
 		
@@ -78,9 +79,14 @@
 		<script src="{{ asset('build/js/controllers/user/userNew.js') }}"></script>
 		<script src="{{ asset('build/js/controllers/user/userEdit.js') }}"></script>
 		<script src="{{ asset('build/js/controllers/user/userRemove.js') }}"></script>
+		<script src="{{ asset('build/js/controllers/turma/turmaList.js') }}"></script>
+		<script src="{{ asset('build/js/controllers/aluno/alunoList.js') }}"></script>
+		<script src="{{ asset('build/js/controllers/aluno/alunoNew.js') }}"></script>
 
 		<!-- SERVICES -->
 		<script src="{{ asset('build/js/services/user.js') }}"></script>
+		<script src="{{ asset('build/js/services/turma.js') }}"></script>
+		<script src="{{ asset('build/js/services/aluno.js') }}"></script>
 		<script src="{{ asset('build/js/services/oauthFixInterceptor.js') }}"></script>
 
 		<!-- FILTERS -->

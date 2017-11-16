@@ -1,3 +1,8 @@
+body {
+  font-weight: 400!important;
+  font-family: 'Montserrat',sans-serif!important;
+}
+
 .form-group {
   margin-bottom: 15px;
 }
@@ -23,21 +28,23 @@ body .wrapper .main-header .navbar .navbar-custom-menu .nav li .dropdown-menu {
   background-color: #f5f4ec!important;
 }
 
-.content-header .fa-user-circle-o::before {
-  color: #ed1c36;
+.content-header .fa-user-o::before,
+.content-header .fa-mortar-board::before,
+.content-header .fa-graduation-cap::before {
+  color: #da131b;
 }
 
 .box.box-danger {
-  border-top-color: #ed1c36!important;
+  border-top-color: #da131b!important;
 }
 
 .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
-  background-color: #ed1c36!important;
-  border-color: #c62c3f!important;
+  background-color: #da131b!important;
+  border-color: #da131b!important;
 }
 
 .content-header .title-header {
-  color: #006cb7!important;
+  color: #064c88!important;
 }
 
 .skin-red .main-header .navbar {
@@ -45,19 +52,19 @@ body .wrapper .main-header .navbar .navbar-custom-menu .nav li .dropdown-menu {
 }
 
 .navbar .navbar-brand, .navbar .navbar-nav a {
-  color: #006cb7!important;
+  color: #064c88!important;
 }
 
 .navbar .navbar-brand.home-logo .blue, .main-footer .home-logo .blue {
-  color: #006cb7!important;
+  color: #064c88!important;
   font-size: 25px!important;
 }
 
-.navbar .navbar-brand.home-logo .red, .main-footer .home-logo .red {
+/*.navbar .navbar-brand.home-logo .red, .main-footer .home-logo .red {
   color: #ed1c36!important;
   margin-left: -7px!important;
   font-size: 25px!important;
-}
+}*/
 
 .navbar .navbar-brand.home-logo img {
   width: 130px;
@@ -66,7 +73,7 @@ body .wrapper .main-header .navbar .navbar-custom-menu .nav li .dropdown-menu {
  }
 
 .skin-red .main-header .navbar .nav>li>a:hover, .skin-red .main-header .navbar .nav>li>a:active, .skin-red .main-header .navbar .nav>li>a:focus, .skin-red .main-header .navbar .nav .open>a, .skin-red .main-header .navbar .nav .open>a:hover, .skin-red .main-header .navbar .nav .open>a:focus, .skin-red .main-header .navbar .nav>.active>a {
-  background: #ed1c36!important;
+  background: #da131b!important;
   color: #fff!important;
 }
 
@@ -79,7 +86,21 @@ body .wrapper .main-header .navbar .navbar-custom-menu .nav li .dropdown-menu {
   color: #666666!important;
 }
 
-.content-header h1 {
-  font-weight: 700;
+.content-header h1 .main-title {
+  font-size: 24px;
+  /*font-weight: 700;*/
+  font-family: 'Montserrat',sans-serif;
 }
 
+label span.required {
+  color: #da131b!important;
+}
+
+.ng-inactive {
+  display: none!important;
+}
+
+.btn.btn-primary {
+  background: #064c88!important;
+  border-color: #064c88!important;
+}

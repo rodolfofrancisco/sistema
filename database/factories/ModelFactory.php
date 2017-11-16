@@ -19,3 +19,11 @@ $factory->define(App\Entities\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Entities\Turma::class, function (Faker\Generator $faker) {
+    return [
+        'descricao' => $faker->word,
+        'nivel' => $faker->numberBetween(1, 4),
+        'professor' => $faker->name,
+    ];
+});

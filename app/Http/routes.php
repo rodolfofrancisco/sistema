@@ -23,3 +23,8 @@ Route::group(['middleware' => 'oauth'], function() {
     Route::get('user/authenticated', 'UserController@authenticated');
     Route::resource('user', 'UserController', ['except' => ['create', 'edit']]);
 });
+
+Route::resource('turma', 'TurmasController', ['except' => ['create', 'edit']]);
+
+Route::resource('aluno', 'AlunosController', ['except' => ['create', 'edit']]);
+Route::get('aluno/cep/{cep}', 'AlunosController@cep');

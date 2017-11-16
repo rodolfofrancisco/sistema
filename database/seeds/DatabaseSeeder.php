@@ -14,14 +14,15 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        factory(App\Entities\User::class)->create([
-            'name' => 'Rodolfo',
-            'email' => 'rodolfofrancisco1990@gmail.com',
-            'password' => bcrypt(123456),
-            'remember_token' => str_random(10),
-        ]);
+//        factory(App\Entities\User::class)->create([
+//            'name' => 'Rodolfo',
+//            'email' => 'rodolfofrancisco1990@gmail.com',
+//            'password' => bcrypt(123456),
+//            'remember_token' => str_random(10),
+//        ]);
 
-        factory(\App\Entities\User::class, 30)->create();
+//        factory(\App\Entities\User::class, 30)->create();
+        factory(\App\Entities\Turma::class, 50)->create();
         // $this->call(UserTableSeeder::class);
 
         Model::reguard();

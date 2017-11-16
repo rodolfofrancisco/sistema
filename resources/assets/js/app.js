@@ -8,6 +8,63 @@ angular.module('app.services', ['ngResource'])
 app.provider('appConfig', ['$httpParamSerializerProvider', function($httpParamSerializerProvider) {
     var config = {
         baseUrl: 'http://localhost:8000',
+        turma: {
+            nivel: [
+                {value: 1, label: 'Básico'},
+                {value: 2, label: 'Intermediário'},
+                {value: 3, label: 'Avançado'},
+                {value: 4, label: 'Fluente'},
+            ]
+        },
+        aluno: {
+            sexo: [
+                {value: 1, label: 'Feminino'},
+                {value: 2, label: 'Masculino'}
+            ],
+            grauInstrucao: [
+                {value: 1, label: 'Sem escolaridade'},
+                {value: 2, label: 'Ensino Fundamental 1 - 1ª a 5ª (incompleto)'},
+                {value: 3, label: 'Ensino Fundamental 1 - 1ª a 5ª (completo)'},
+                {value: 4, label: 'Ensino Fundamental 2 - 6ª a 9ª (incompleto)'},
+                {value: 5, label: 'Ensino Fundamental 2 - 6ª a 9ª (completo)'},
+                {value: 6, label: 'Ensino Médio - 1ª a 3ª ano do 2º grau (incompleto)'},
+                {value: 7, label: 'Ensino Médio - 1ª a 3ª ano do 2º grau (completo)'},
+                {value: 8, label: 'Nível técnico/Tecnológo (incompleto)'},
+                {value: 9, label: 'Nível técnico/Tecnólogo (completo)'},
+                {value: 10, label: 'Superior (incompleto)'},
+                {value: 11, label: 'Superior (completo)'},
+                {value: 12, label: 'Pós-graduação (Mestrado/Doutorado/Especialização) (incompleto)'},
+                {value: 13, label: 'Pós-graduação (Mestrado/Doutorado/Especialização) (completo)'},
+            ], estado: [                
+                {value: 'AC', label: 'Acre'},
+                {value: 'AL', label: 'Alagoas'},
+                {value: 'AP', label: 'Amapá'},
+                {value: 'AM', label: 'Amazonas'},
+                {value: 'BA', label: 'Bahia'},
+                {value: 'CE', label: 'Ceará'},
+                {value: 'DF', label: 'Distrito Federal'},
+                {value: 'ES', label: 'Espírito Santo'},
+                {value: 'GO', label: 'Goiás'},
+                {value: 'MA', label: 'Maranhão'},
+                {value: 'MT', label: 'Mato Grosso'},
+                {value: 'MS', label: 'Mato Grosso do Sul'},
+                {value: 'MG', label: 'Minas Gerais'},
+                {value: 'PA', label: 'Pará'},
+                {value: 'PB', label: 'Paraíba'},
+                {value: 'PR', label: 'Paraná'},
+                {value: 'PE', label: 'Pernambuco'},
+                {value: 'PI', label: 'Piauí'},
+                {value: 'RJ', label: 'Rio de Janeiro'},
+                {value: 'RN', label: 'Rio Grande do Norte'},
+                {value: 'RS', label: 'Rio Grande do Sul'},
+                {value: 'RO', label: 'Rondônia'},
+                {value: 'RR', label: 'Roraima'},
+                {value: 'SC', label: 'Santa Catarina'},
+                {value: 'SP', label: 'São Paulo'},
+                {value: 'SE', label: 'Sergipe'},
+                {value: 'TO', label: 'Tocantins'},
+            ]
+        },
         utils: {
             transformRequest: function(data) {
                 if (angular.isObject(data)) {
@@ -86,6 +143,20 @@ app.config(['$routeProvider', '$httpProvider', 'OAuthProvider', 'OAuthTokenProvi
         .when('/usuario/:id/remove', {
             templateUrl: 'build/views/user/remove.html',
             controller: 'UserRemoveController'
+        })
+        .when('/turma', {
+            templateUrl: 'build/views/turma/list.html',
+            controller: 'TurmaListController',
+            title: 'Turmas'
+        })
+        .when('/aluno', {
+            templateUrl: 'build/views/aluno/list.html',
+            controller: 'AlunoListController',
+            title: 'Alunos'
+        })
+        .when('/aluno/new', {
+            templateUrl: 'build/views/aluno/new.html',
+            controller: 'AlunoNewController'
         })
     
     OAuthProvider.configure({

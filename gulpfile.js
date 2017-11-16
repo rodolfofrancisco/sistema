@@ -26,7 +26,9 @@ config.vendor_path_js = [
     config.bower_path + '/query-string/query-string.js',
     config.bower_path + '/angular-oauth2/dist/angular-oauth2.min.js',
     config.bower_path + '/angular-http-auth/src/http-auth-interceptor.js',
-    config.bower_path + '/angularUtils-pagination/dirPagination.js'
+    config.bower_path + '/angularUtils-pagination/dirPagination.js',
+    config.bower_path + '/angular-locale-pt-br/angular-locale_pt-br.js',
+    config.bower_path + '/jquery-meiomask/dist/meiomask.min.js'
 ]
 
 config.build_path_css = config.build_path + '/css'
@@ -51,6 +53,11 @@ gulp.task('copy-font', function() {
         .pipe(liveReload())
     gulp.src([
         config.bower_path + '/components-font-awesome/fonts/**/*'
+    ])
+        .pipe(gulp.dest(config.build_path_css + '/fonts'))
+        .pipe(liveReload())
+    gulp.src([
+        config.bower_path + '/bootstrap/fonts/**/*'
     ])
         .pipe(gulp.dest(config.build_path_css + '/fonts'))
         .pipe(liveReload())

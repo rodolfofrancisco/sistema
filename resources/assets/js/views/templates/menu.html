@@ -3,7 +3,7 @@
         <div class="container">
             <div class="navbar-header">
                 <a ng-href="#/home" class="navbar-brand home-logo">
-                    <img src="../../build/images/logo.png">
+                    <img src="../../build/images/logo_color.png">
                 </a>
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                 <i class="fa fa-bars"></i>
@@ -19,8 +19,18 @@
                     </li>
                     <li data-match-route="/usuario">
                         <a href="#/usuario">
-                            <i class="fa fa-user-circle-o"></i> Usuário
+                            <i class="fa fa-user-o"></i> Usuário
                         </a>
+                    </li>
+                    <li data-match-route="/turma">
+                        <a ng-href="#/turma">
+                            <i class="fa fa-university"></i> Turma
+                        </a>
+                    </li>
+                    <li data-match-route="/aluno">
+                        <a ng-href="#/aluno">
+                            <i class="fa fa-graduation-cap"></i> Aluno 
+                        </a>                        
                     </li>
                 </ul>
             </div>
@@ -28,8 +38,8 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown user user-menu" dropdown="">
                         <a ng-href="#/home" class="dropdown-toggle" data-toggle="dropdown" role="button" dropdown-toggle="">
-                            <i class="fa fa-user-o"></i>
-                            <span class="hidden-xs">{{user.name}}</span>
+                            <i class="fa fa-user-circle-o"></i>
+                            <span class="hidden-xs">{{user.data.name}}</span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li class="user-footer">

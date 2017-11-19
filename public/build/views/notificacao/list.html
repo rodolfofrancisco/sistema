@@ -1,0 +1,62 @@
+<div class="container">
+        <section class="content-header">
+            <h1>
+                <span class="title-header">
+                    <span class="main-title">
+                        <i class="fa fa-envelope"></i> Notificações
+                    </span>
+                </span>
+                <a href="#/notificacao/new" title="Cadastrar" class="btn btn-success pull-right" data-ajax="normal">
+                    <i class="fa fa-plus"></i> Cadastrar
+                </a>
+            </h1>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box box-danger">
+                        <div class="box-body">
+                            <table class="table table-bordered" id="tableAlunos" ui-jq="dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>Título</th>
+                                        <th>Tipo</th>
+                                        <th>Turma</th>
+                                        <th>Aluno</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr dir-paginate="o in notificacaoes | itemsPerPage: notificacaoesPerPage" total-items="totalNotificacaoes" current-page="pagination.current" >
+                                        <td></td>
+                                        <td>
+                                            <ul class="actions">
+                                                <li>
+                                                    <a href="#/usuario" title="" data-toggle="tooltip" data-placement="top" data-original-title="Visualizar" data-ajax="normal">
+                                                        <i class="fa fa-eye"></i> 
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a ng-href="#/usuario/{{o.id}}/edit" title="Editar" class="text-warning">
+                                                        <i class="fa fa-pencil"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a title="Excluir" class="text-danger" ng-click="remove(o.id)">
+                                                        <i class="fa fa-remove"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pull-right">
+                                <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>

@@ -1,0 +1,44 @@
+<div class="container">
+    <section class="content-header">
+        <h1>
+            <span class="title-header">
+                <span class="main-title">
+                    <i class="fa fa-tasks"></i> Questionário
+                </span>
+            </span>
+            <a href="/#/questionario" title="" class="btn btn-default pull-right" data-toggle="tooltip" data-placement="top" data-original-title="Voltar" data-ajax="normal">
+                <i class="fa fa-chevron-left"></i> Voltar
+            </a>
+        </h1>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-danger">
+                    <form name="form" role="form" method="POST" ng-submit="save()">
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-6 form-group" ng-class="{'has-error': !form.titulo.$valid && form.titulo.$touched}">
+                                    <label>Título <span class="required">*</span></label>
+                                    <input type="text" class="form-control" name="titulo" ng-model="questionario.titulo" required>
+                                    <div ng-messages="form.titulo.$error" class="help-block" ng-show="form.titulo.$touched">
+                                        <div ng-message="required">Campo Obrigatório</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label style="color: white;">Pergunta</label>
+                                    <div>
+                                        <a ng-click="novaPergunta(questionario.id)">+ Adicionar uma pergunta</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                        
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary pull-right">Salvar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

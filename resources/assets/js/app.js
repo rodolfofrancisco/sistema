@@ -158,6 +158,24 @@ app.config(['$routeProvider', '$httpProvider', 'OAuthProvider', 'OAuthTokenProvi
             templateUrl: 'build/views/aluno/new.html',
             controller: 'AlunoNewController'
         })
+        .when('/questionario', {
+            templateUrl: 'build/views/questionario/list.html',
+            controller: 'QuestionarioListController',
+            title: 'Questionários'
+        })
+        .when('/questionario/new', {
+            templateUrl: 'build/views/questionario/new.html',
+            controller: 'QuestionarioNewController'
+        })
+        .when('/notificacao', {
+            templateUrl: 'build/views/notificacao/list.html',
+            controller: 'NotificacaoListController',
+            title: 'Notificações'
+        })
+        .when('/notificacao/new', {
+            templateUrl: 'build/views/notificacao/new.html',
+            controller: 'NotificacaoNewController'
+        })
     
     OAuthProvider.configure({
         baseUrl: appConfigProvider.config.baseUrl,

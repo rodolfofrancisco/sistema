@@ -1,0 +1,86 @@
+<div class="container">
+        <section class="content-header">
+            <h1>
+                <span class="title-header">
+                    <span class="main-title">
+                        <i class="fa fa-envelope"></i> Notificacão
+                    </span>
+                </span>
+                <a href="/#/notificacao" title="" class="btn btn-default pull-right" data-toggle="tooltip" data-placement="top" data-original-title="Voltar" data-ajax="normal">
+                    <i class="fa fa-chevron-left"></i> Voltar
+                </a>
+            </h1>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-danger">
+                        <form name="form" role="form" method="POST" ng-submit="save()">
+                            <div class="box-body">
+                                <div class="row">
+                                    <div class="col-md-6 form-group" ng-class="{'has-error': !form.titulo.$valid && form.titulo.$touched}">
+                                        <label>Título <span class="required">*</span></label>
+                                        <input type="text" class="form-control" name="titulo" ng-model="questionario.titulo" required>
+                                        <div ng-messages="form.titulo.$error" class="help-block" ng-show="form.titulo.$touched">
+                                            <div ng-message="required">Campo Obrigatório</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label>Descrição <span class="required">*</span></label>
+                                        <textarea class="form-control" name="titulo" ng-model="questionario.titulo" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 form-group">
+                                        <label>Tipo <span class="required">*</span></label>
+                                        <select class="form-control" name="tipo" ng-model="pergunta.tipo" ng-options="o.value as o.label for o in tipo">
+                                            <option value="">Selecione...</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 form-group" ng-class="{'has-error': !form.titulo.$valid && form.titulo.$touched}">
+                                        <label>Arquivo <span class="required">*</span></label>
+                                        <input type="file" class="form-control" name="titulo" ng-model="questionario.titulo" required>
+                                        <div ng-messages="form.titulo.$error" class="help-block" ng-show="form.titulo.$touched">
+                                            <div ng-message="required">Campo Obrigatório</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 form-group">
+                                        <label>Turma <span class="required">*</span></label>
+                                        <select class="form-control" name="tipo" ng-model="pergunta.tipo" ng-options="o.value as o.label for o in tipo">
+                                            <option value="">Selecione...</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label>Aluno  <span class="required">*</span></label>
+                                        <select class="form-control" name="tipo" ng-model="pergunta.tipo" ng-options="o.value as o.label for o in tipo">
+                                            <option value="">Selecione...</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 form-group">
+                                        <label>Questionário <span class="required">*</span></label>
+                                        <select class="form-control" name="tipo" ng-model="pergunta.tipo" ng-options="o.value as o.label for o in tipo">
+                                            <option value="">Selecione...</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 form-group" ng-class="{'has-error': !form.titulo.$valid && form.titulo.$touched}">
+                                        <label>Data de Agendamento <span class="required">*</span></label>
+                                        <input type="text" class="form-control" name="titulo" ng-model="questionario.titulo" required>
+                                        <div ng-messages="form.titulo.$error" class="help-block" ng-show="form.titulo.$touched">
+                                            <div ng-message="required">Campo Obrigatório</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                        
+                            <div class="box-footer">
+                                <button type="submit" class="btn btn-primary pull-right">Salvar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>

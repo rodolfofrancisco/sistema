@@ -19,7 +19,7 @@
                     </li>
                     <li data-match-route="/usuario">
                         <a href="#/usuario">
-                            <i class="fa fa-user-o"></i> Usuário
+                            <i class="fa fa-user-circle"></i> Usuário
                         </a>
                     </li>
                     <li data-match-route="/turma">
@@ -30,6 +30,16 @@
                     <li data-match-route="/aluno">
                         <a ng-href="#/aluno">
                             <i class="fa fa-graduation-cap"></i> Aluno 
+                        </a>                        
+                    </li>
+                    <li data-match-route="/questionario">
+                        <a ng-href="#/questionario">
+                            <i class="fa fa-tasks"></i> Questionário 
+                        </a>                        
+                    </li>
+                    <li data-match-route="/notificacao">
+                        <a ng-href="#/notificacao">
+                            <i class="fa fa-envelope"></i> Notificação 
                         </a>                        
                     </li>
                 </ul>
@@ -44,10 +54,10 @@
                         <ul class="dropdown-menu" role="menu">
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="/SOHO/public/data/sys-user/edit-me" title="Alterar Meus Dados" id="Cadastros.SysUser.Controller" class="btn btn-default btn-flat" data-ajax="ajax">Meu Perfil</a>										
+                                    <a title="Meu Perfil" class="btn btn-default btn-flat" ng-click="perfil(user.data.id)">Meu Perfil</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="#/logout" title="Sair" class="btn btn-default btn-flat">Sair</a>										
+                                    <a href="#/logout" title="Sair" class="btn btn-default btn-flat">Sair</a>
                                 </div>
                             </li>
                         </ul>

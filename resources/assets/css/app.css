@@ -1,4 +1,4 @@
-body {
+body, h4, label, button, th, a {
   font-weight: 400!important;
   font-family: 'Montserrat',sans-serif!important;
 }
@@ -28,9 +28,11 @@ body .wrapper .main-header .navbar .navbar-custom-menu .nav li .dropdown-menu {
   background-color: #f5f4ec!important;
 }
 
-.content-header .fa-user-o::before,
+.content-header .fa-user-circle::before,
 .content-header .fa-mortar-board::before,
-.content-header .fa-graduation-cap::before {
+.content-header .fa-graduation-cap::before,
+.content-header .fa-tasks::before,
+.content-header .fa-envelope::before {
   color: #da131b;
 }
 
@@ -103,4 +105,19 @@ label span.required {
 .btn.btn-primary {
   background: #064c88!important;
   border-color: #064c88!important;
+}
+
+.modal-header {
+  background: #064c88!important;
+  color: white!important;
+}
+
+.modal-header button {
+  color: white!important;
+  opacity: unset!important;
+  font-size: 24px!important;
+}
+
+form a {
+  cursor: pointer!important;
 }

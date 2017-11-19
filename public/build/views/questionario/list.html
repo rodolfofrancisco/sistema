@@ -3,10 +3,10 @@
         <h1>
             <span class="title-header">
                 <span class="main-title">
-                    <i class="fa fa-user-circle"></i> Usuários
+                    <i class="fa fa-tasks"></i> Questionários
                 </span>
             </span>
-            <a href="/#usuario/new" title="Cadastrar" class="btn btn-success pull-right" data-ajax="normal">
+            <a href="#/questionario/new" title="Cadastrar" class="btn btn-success pull-right" data-ajax="normal">
                 <i class="fa fa-plus"></i> Cadastrar
             </a>
         </h1>
@@ -16,20 +16,16 @@
             <div class="col-xs-12">
                 <div class="box box-danger">
                     <div class="box-body">
-                        <table class="table table-bordered" id="tableUsers" ui-jq="dataTable">
+                        <table class="table table-bordered" id="tableAlunos" ui-jq="dataTable">
                             <thead>
                                 <tr>
-                                    <th>Nome</th>
-                                    <th>E-mail</th>
-                                    <th>Data de Cadastro</th>
+                                    <th>Título</th>                                   
                                     <th>Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr dir-paginate="o in users | itemsPerPage: usersPerPage" total-items="totalUsers" current-page="pagination.current" >
-                                    <td>{{o.name}}</td>
-                                    <td>{{o.email}}</td>
-                                    <td>{{o.created_at | date:'dd-M-yyyy H:mm:ss'}}</td>
+                                <tr dir-paginate="o in questionarios | itemsPerPage: questionariosPerPage" total-items="totalQuestionarios" current-page="pagination.current" >
+                                    <td></td>
                                     <td>
                                         <ul class="actions">
                                             <li>

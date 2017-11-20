@@ -20,5 +20,21 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository {
     public function presenter() {
         return UserPresenter::class;
     }
+    
+    public function create(array $data) {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+        ]);
+    }
+    
+    public function update(array $data, $id) {
+        return User::find($id)->update([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+        ]);
+    }
 
 }

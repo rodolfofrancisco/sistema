@@ -70,6 +70,7 @@
 			<script src="{{ asset('build/js/controllers/user/userList.js') }}"></script>
 			<script src="{{ asset('build/js/controllers/user/userNew.js') }}"></script>
 			<script src="{{ asset('build/js/controllers/user/userEdit.js') }}"></script>
+			<script src="{{ asset('build/js/controllers/user/userView.js') }}"></script>
 			<script src="{{ asset('build/js/controllers/user/userRemove.js') }}"></script>
 			<script src="{{ asset('build/js/controllers/user/userPerfil.js') }}"></script>
 			<script src="{{ asset('build/js/controllers/turma/turmaList.js') }}"></script>

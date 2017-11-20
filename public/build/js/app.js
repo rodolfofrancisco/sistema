@@ -140,6 +140,10 @@ app.config(['$routeProvider', '$httpProvider', 'OAuthProvider', 'OAuthTokenProvi
             templateUrl: 'build/views/user/edit.html',
             controller: 'UserEditController'
         })
+        .when('/usuario/:id/view', {
+            templateUrl: 'build/views/user/view.html',
+            controller: 'UserViewController'
+        })
         .when('/usuario/:id/remove', {
             templateUrl: 'build/views/user/remove.html',
             controller: 'UserRemoveController'

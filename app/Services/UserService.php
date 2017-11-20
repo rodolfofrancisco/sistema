@@ -21,7 +21,7 @@ class UserService {
 
     public function create(array $data) {
         try {
-            $this->validator->with($data)->passesOrFail();
+            $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
 
             return $this->repository->create($data);
         } catch (ValidatorException $e) {

@@ -1,5 +1,9 @@
 <?php
-
+/**
+* @version $Revision$
+* @author $Author$
+* @since $Date$
+*/
 namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
@@ -12,15 +16,14 @@ use App\Validators\AlunoValidator;
  * Class AlunoRepositoryEloquent
  * @package namespace App\Repositories;
  */
-class AlunoRepositoryEloquent extends BaseRepository implements AlunoRepository
-{
+class AlunoRepositoryEloquent extends BaseRepository implements AlunoRepository {
+    
     /**
      * Specify Model class name
      *
      * @return string
      */
-    public function model()
-    {
+    public function model() {
         return Aluno::class;
     }
 
@@ -29,18 +32,15 @@ class AlunoRepositoryEloquent extends BaseRepository implements AlunoRepository
     *
     * @return mixed
     */
-    public function validator()
-    {
-
+    public function validator() {
         return AlunoValidator::class;
     }
-
 
     /**
      * Boot up the repository, pushing criteria
      */
-    public function boot()
-    {
+    public function boot() {
         $this->pushCriteria(app(RequestCriteria::class));
     }
+    
 }

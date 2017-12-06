@@ -20,7 +20,7 @@
                             <div class="row">
                                 <div class="col-md-6 form-group" ng-class="{'has-error': !form.titulo.$valid && form.titulo.$touched}">
                                     <label>Título <span class="required">*</span></label>
-                                    <input type="text" class="form-control" name="titulo" ng-model="questionario.titulo" required>
+                                    <input type="text" class="form-control" name="titulo" ng-model="questionario.titulo" ng-blur="change()" required>
                                     <div ng-messages="form.titulo.$error" class="help-block" ng-show="form.titulo.$touched">
                                         <div ng-message="required">Campo Obrigatório</div>
                                     </div>

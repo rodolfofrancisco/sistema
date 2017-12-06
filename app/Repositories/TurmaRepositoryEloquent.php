@@ -1,5 +1,9 @@
 <?php
-
+/**
+* @version $Revision$
+* @author $Author$
+* @since $Date$
+*/
 namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
@@ -13,15 +17,13 @@ use App\Presenters\TurmaPresenter;
  * Class TurmaRepositoryEloquent
  * @package namespace App\Repositories;
  */
-class TurmaRepositoryEloquent extends BaseRepository implements TurmaRepository
-{
+class TurmaRepositoryEloquent extends BaseRepository implements TurmaRepository {
     /**
      * Specify Model class name
      *
      * @return string
      */
-    public function model()
-    {
+    public function model() {
         return Turma::class;
     }
 
@@ -30,22 +32,19 @@ class TurmaRepositoryEloquent extends BaseRepository implements TurmaRepository
     *
     * @return mixed
     */
-    public function validator()
-    {
-
+    public function validator() {
         return TurmaValidator::class;
     }
-
 
     /**
      * Boot up the repository, pushing criteria
      */
-    public function boot()
-    {
+    public function boot() {
         $this->pushCriteria(app(RequestCriteria::class));
     }
 
     public function presenter() {
         return TurmaPresenter::class;
     }
+    
 }

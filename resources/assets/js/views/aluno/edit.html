@@ -1,0 +1,164 @@
+<div class="container">
+    <section class="content-header">
+        <h1>
+            <span class="title-header">
+                <span class="main-title">
+                    <i class="fa fa-graduation-cap"></i> Alunos
+                </span>
+            </span>
+            <a href="/#/aluno" title="" class="btn btn-default pull-right" data-toggle="tooltip" data-placement="top" data-original-title="Voltar" data-ajax="normal">
+                <i class="fa fa-chevron-left"></i> Voltar
+            </a>
+        </h1>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-danger">
+                    <form name="form" role="form" method="POST" ng-submit="save()">
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="alert alert-danger" ng-show="error.error">
+                                        <strong>Whoops!</strong> Ocorrerarm erros.<br><br>
+                                        <div ng-repeat="message in error.message">
+                                            {{ message[0] }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group" ng-class="{'has-error': !form.nome_completo.$valid && form.nome_completo.$touched}">
+                                    <label>Nome <span class="required">*</span></label>
+                                    <input type="text" class="form-control" name="nome_completo" ng-model="aluno.nome_completo" required>
+                                    <div ng-messages="form.nome_completo.$error" class="help-block" ng-show="form.nome_completo.$touched">
+                                        <div ng-message="required">Campo Obrigatório</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 form-group" ng-class="{'has-error': !form.matricula.$valid && form.matricula.$touched}">
+                                    <label>Matrícula <span class="required">*</span></label>
+                                    <input type="text" class="form-control" name="matricula" ng-model="aluno.matricula" alt="integer" required>
+                                    <div ng-messages="form.matricula.$error" class="help-block" ng-show="form.matricula.$touched">
+                                        <div ng-message="required">Campo Obrigatório</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group" ng-class="{'has-error': !form.email.$valid && form.email.$touched}">
+                                    <label>E-mail <span class="required">*</span></label>
+                                    <input type="email" class="form-control" name="email" ng-model="aluno.email" required>
+                                    <div ng-messages="form.email.$error" class="help-block" ng-show="form.email.$touched">
+                                        <div ng-message="required">Campo Obrigatório</div>
+                                        <div ng-message="email">E-mail inválido</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 form-group" ng-class="{'has-error': !form.data_nacimento.$valid && form.data_nacimento.$touched}">
+                                    <label>Data de Nascimento <span class="required">*</span></label>
+                                    <input type="text" class="form-control" name="data_nacimento" ng-model="aluno.data_nacimento" alt="date" placeholder="00/00/00000" required />
+                                    <div ng-messages="form.data_nacimento.$error" class="help-block" ng-show="form.data_nacimento.$touched">
+                                        <div ng-message="required">Campo Obrigatório</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label>Sexo</label>
+                                    <select class="form-control" name="sexo" ng-model="aluno.sexo" ng-options="o.value as o.label for o in sexo">
+                                        <option value="">Selecione...</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 form-group" ng-class="{'has-error': !form.cpf.$valid && form.cpf.$touched}">
+                                    <label>CPF <span class="required">*</span></label>
+                                    <input type="text" class="form-control" name="cpf" ng-model="aluno.cpf" alt="cpf" required>
+                                    <div ng-messages="form.cpf.$error" class="help-block" ng-show="form.cpf.$touched">
+                                        <div ng-message="required">Campo Obrigatório</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group" ng-class="{'has-error': !form.telefone.$valid && form.telefone.$touched}">
+                                    <label>Telefone <span class="required">*</span></label>
+                                    <input type="text" class="form-control" name="telefone" ng-model="aluno.telefone" alt="phone" required>
+                                    <div ng-messages="form.telefone.$error" class="help-block" ng-show="form.telefone.$touched">
+                                        <div ng-message="required">Campo Obrigatório</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>Celular</label>
+                                    <input type="text" class="form-control" name="celular" ng-model="aluno.celular" alt="(99) 99999-9999">
+                                </div>
+                            </div>                            
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label>Grau de Instrução</label>
+                                    <select class="form-control" name="grau_instrucao" ng-model="aluno.grau_instrucao" ng-options="o.value as o.label for o in grauInstrucao">
+                                        <option value="">Selecione...</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 form-group" ng-class="{'has-error': !form.turmas_id.$valid && form.turmas_id.$touched}">
+                                    <label>Turma <span class="required">*</span></label>
+                                    <select class="form-control" name="turmas_id" ng-model="aluno.turmas_id" ng-options="o.id as o.descricao for o in turmas.data" required>
+                                        <option value="">Selecione...</option>
+                                    </select>
+                                    <div ng-messages="form.turmas_id.$error" class="help-block" ng-show="form.turmas_id.$touched">
+                                        <div ng-message="required">Campo Obrigatório</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label>CEP</label>
+                                    <input type="text" class="form-control" name="cep" ng-model="aluno.cep" alt="cep" ng-blur="getCep()">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label>Endereço</label>
+                                    <input type="text" class="form-control" name="logradouro" ng-model="aluno.logradouro">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>Número</label>
+                                    <input type="text" class="form-control" name="numero" ng-model="aluno.numero" alt="integer">
+                                </div>
+                            </div>
+                            <div class="row">                                
+                                <div class="col-md-6 form-group">
+                                    <label>Complemento</label>
+                                    <input type="text" class="form-control" name="complemento" ng-model="aluno.complemento">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>Bairro</label>
+                                    <input type="text" class="form-control" name="bairro" ng-model="aluno.bairro">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label>Cidade</label>
+                                    <input type="text" class="form-control" name="cidade" ng-model="aluno.cidade">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label>Estado</label>
+                                    <select class="form-control" name="estado" ng-model="aluno.estado" ng-options="o.value as o.label for o in estado">
+                                        <option value="">Selecione...</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>                        
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary pull-right">Editar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('input[alt]').each(function() {
+            var input = $(this);
+            input.setMask(input.attr('alt'))
+        });
+    })
+</script>

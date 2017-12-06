@@ -15,7 +15,11 @@ angular.module('app.controllers')
     function getResultsPage(pageNumber) {
         User.query({page: pageNumber}, function(data) {
             $scope.users = data.data
-            $scope.totalUsers = data.meta.pagination.total
+            if (data.meta !== undefined) {
+                $scope.totalUsers = data.meta.pagination.total
+            } else {
+                $scope.totalUsers = data.data.length
+            }
         })
     }
 

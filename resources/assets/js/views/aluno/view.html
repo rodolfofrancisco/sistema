@@ -1,0 +1,110 @@
+<div class="container">
+    <section class="content-header">
+        <h1>
+            <span class="title-header">
+                <span class="main-title">
+                    <i class="fa fa-graduation-cap"></i> Alunos
+                </span>
+            </span>
+            <a href="/#/aluno" title="" class="btn btn-default pull-right" data-toggle="tooltip" data-placement="top" data-original-title="Voltar" data-ajax="normal">
+                <i class="fa fa-chevron-left"></i> Voltar
+            </a>
+        </h1>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-danger">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Nome:</label>
+                                <span>{{aluno.nome_completo}}</span>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Matrícula:</label>
+                                <span>{{aluno.matricula}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>E-mail:</label>
+                                <span>{{aluno.email}}</span>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Data de Nascimento:</label>
+                                <span>{{aluno.data_nacimento}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Sexo:</label>
+                                <span>{{ (sexo | filter : {'value': aluno.sexo})[0].label }}</span>
+                            </div>
+                            <div class="col-md-6">
+                                <label>CPF:</label>
+                                <span>{{aluno.cpf}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Telefone:</label>
+                                <span>{{aluno.telefone}}</span>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Celular:</label>
+                                <span>{{aluno.celular}}</span>
+                            </div>
+                        </div>                            
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Grau de Instrução:</label>
+                                <span>{{ (grauInstrucao | filter : {'value': aluno.grau_instrucao})[0].label }}</span>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Turma:</label>
+                                <span>{{ (turmas.data | filter : {'id': aluno.turmas_id})[0].descricao }}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>CEP:</label>
+                                <span>{{aluno.cep}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Endereço:</label>
+                                <span>{{aluno.logradouro}}</span>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Número:</label>
+                                <span>{{aluno.numero}}</span>
+                            </div>
+                        </div>
+                        <div class="row">                                
+                            <div class="col-md-6">
+                                <label>Complemento:</label>
+                                <span>{{aluno.complemento}}</span>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Bairro:</label>
+                                <span>{{aluno.bairro}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Cidade:</label>
+                                <span>{{aluno.cidade}}</span>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Estado:</label>
+                                <span>{{ (estado | filter : {'value': aluno.estado})[0].label }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

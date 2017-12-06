@@ -108,7 +108,8 @@ return [
     'attributes' => [
         'email' => 'E-mail',
         'password' => 'Senha',
-        'confirmed' => 'Confirmação de Senha'
+        'confirmed' => 'Confirmação de Senha',
+        'data_nacimento' => 'Data de Nascimento'
     ],
 
 ];

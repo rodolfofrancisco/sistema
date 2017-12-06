@@ -1,8 +1,9 @@
 angular.module('app.controllers')
-.controller('AlunoListController', ['$scope', 'Aluno', '$modal', 'appConfig', function($scope, Aluno, $modal, appConfig) {
+.controller('AlunoListController', ['$scope', 'Aluno', '$modal', 'appConfig', 'Turma', function($scope, Aluno, $modal, appConfig, Turma) {
     $scope.alunos = []
     $scope.totalAlunos = 0
     $scope.alunosPerPage = 15
+    $scope.turmas = Turma.getAll()
 
     $scope.pagination = {
         current: 1
@@ -14,16 +15,20 @@ angular.module('app.controllers')
     
     function getResultsPage(pageNumber) {
         $scope.alunos = []
-        /*Turma.query({page: pageNumber}, function(data) {
-            $scope.turmas = data.data
-            $scope.totalTurmas = data.meta.pagination.total
-        })*/
+        Aluno.query({page: pageNumber}, function(data) {
+            $scope.alunos = data.data
+            if (data.meta !== undefined) {
+                $scope.totalAlunos = data.meta.pagination.total
+            } else {
+                $scope.totalAlunos = data.data.length
+            }
+        })
     }
 
     $scope.remove = function(id) {
         var modalInstance = $modal.open({
-            templateUrl: 'build/views/tumra/remove.html',
-            controller: 'TurmaRemoveController',
+            templateUrl: 'build/views/aluno/remove.html',
+            controller: 'AlunoRemoveController',
             backdrop  : 'static',
             keyboard  : false,
             resolve: {

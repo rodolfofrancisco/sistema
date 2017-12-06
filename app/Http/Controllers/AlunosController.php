@@ -1,5 +1,9 @@
 <?php
-
+/**
+* @version $Revision$
+* @author $Author$
+* @since $Date$
+*/
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -13,8 +17,7 @@ use App\Repositories\AlunoRepository;
 use App\Validators\AlunoValidator;
 
 
-class AlunosController extends Controller
-{
+class AlunosController extends Controller {
 
     /**
      * @var AlunoRepository
@@ -26,31 +29,18 @@ class AlunosController extends Controller
      */
     protected $validator;
 
-    public function __construct(AlunoRepository $repository, AlunoValidator $validator)
-    {
+    public function __construct(AlunoRepository $repository, AlunoValidator $validator) {
         $this->repository = $repository;
         $this->validator  = $validator;
     }
-
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        $alunos = $this->repository->all();
-
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'data' => $alunos,
-            ]);
-        }
-
-        return view('alunos.index', compact('alunos'));
+    public function index() {
+        return $this->repository->paginate();
     }
 
     /**
@@ -60,22 +50,29 @@ class AlunosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(AlunoCreateRequest $request)
-    {
-
+    public function store(AlunoCreateRequest $request) {
         try {
-
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
-
-            $aluno = $this->repository->create($request->all());
+            $params = $request->all();
+            if (isset($params['numero']) && !empty($params['numero'])) {
+                $params['numero'] = preg_replace('/[^0-9]/', '', $params['numero']);
+            }
+            
+            if (isset($params['data_nacimento']) && !empty($params['data_nacimento'])) {
+                $datetime = \DateTime::createFromFormat('d/m/Y', $params['data_nacimento']);
+                if ($datetime) {
+                    $params['data_nacimento'] = $datetime->format('Y-m-d');
+                }
+            }
+            
+            $this->validator->with($params)->passesOrFail(ValidatorInterface::RULE_CREATE);
+            $aluno = $this->repository->create($params);
 
             $response = [
-                'message' => 'Aluno created.',
-                'data'    => $aluno->toArray(),
+                'message' => 'Aluno criado com sucesso.',
+                'data'    => $aluno,
             ];
 
             if ($request->wantsJson()) {
-
                 return response()->json($response);
             }
 
@@ -85,13 +82,12 @@ class AlunosController extends Controller
                 return response()->json([
                     'error'   => true,
                     'message' => $e->getMessageBag()
-                ]);
+                ], 401);
             }
 
             return redirect()->back()->withErrors($e->getMessageBag())->withInput();
         }
     }
-
 
     /**
      * Display the specified resource.
@@ -100,20 +96,41 @@ class AlunosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         $aluno = $this->repository->find($id);
-
+        
         if (request()->wantsJson()) {
-
-            return response()->json([
-                'data' => $aluno,
-            ]);
+            if (isset($aluno['data']) && count($aluno['data']) > 0) {
+                $aluno = $aluno['data'];
+                
+                if (isset($aluno['updated_at'])) {
+                    unset($aluno['updated_at']);                    
+                }
+                
+                if (isset($aluno['created_at'])) {
+                    unset($aluno['created_at']);
+                }
+                
+                if (isset($aluno['data_nacimento']) && !empty($aluno['data_nacimento'])) {
+                    $datetime = \DateTime::createFromFormat('Y-m-d', $aluno['data_nacimento']);
+                    if ($datetime) {
+                        $aluno['data_nacimento'] = $datetime->format('d/m/Y');
+                    }
+                }                
+            } else {
+                if ($aluno->data_nacimento) {
+                    $datetime = \DateTime::createFromFormat('Y-m-d', $aluno->data_nacimento);
+                    if ($datetime) {
+                        $aluno->data_nacimento = $datetime->format('d/m/Y');
+                    }
+                }
+            }
+        
+            return response()->json($aluno);
         }
-
+        
         return view('alunos.show', compact('aluno'));
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -122,11 +139,8 @@ class AlunosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-
+    public function edit($id) {
         $aluno = $this->repository->find($id);
-
         return view('alunos.edit', compact('aluno'));
     }
     
@@ -152,7 +166,7 @@ class AlunosController extends Controller
         return $results;
     }
 
-        /**
+    /**
      * Update the specified resource in storage.
      *
      * @param  AlunoUpdateRequest $request
@@ -160,40 +174,44 @@ class AlunosController extends Controller
      *
      * @return Response
      */
-    public function update(AlunoUpdateRequest $request, $id)
-    {
+    public function update(AlunoUpdateRequest $request, $id) {
 
         try {
-
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
-
-            $aluno = $this->repository->update($request->all(), $id);
+            $params = $request->all();
+            if (isset($params['numero']) && !empty($params['numero'])) {
+                $params['numero'] = preg_replace('/[^0-9]/', '', $params['numero']);
+            }
+            if (isset($params['data_nacimento']) && !empty($params['data_nacimento'])) {
+                $datetime = \DateTime::createFromFormat('d/m/Y', $params['data_nacimento']);
+                if ($datetime) {
+                    $params['data_nacimento'] = $datetime->format('Y-m-d');
+                }
+            }
+            
+            $this->validator->with($params)->passesOrFail(ValidatorInterface::RULE_UPDATE);
+            $aluno = $this->repository->update($params, $id);
 
             $response = [
-                'message' => 'Aluno updated.',
-                'data'    => $aluno->toArray(),
+                'message' => 'Aluno atualizado com sucesso.',
+                'data'    => $aluno,
             ];
 
             if ($request->wantsJson()) {
-
                 return response()->json($response);
             }
 
             return redirect()->back()->with('message', $response['message']);
         } catch (ValidatorException $e) {
-
             if ($request->wantsJson()) {
-
                 return response()->json([
                     'error'   => true,
                     'message' => $e->getMessageBag()
-                ]);
+                ], 401);
             }
 
             return redirect()->back()->withErrors($e->getMessageBag())->withInput();
         }
     }
-
 
     /**
      * Remove the specified resource from storage.
@@ -202,18 +220,17 @@ class AlunosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         $deleted = $this->repository->delete($id);
 
         if (request()->wantsJson()) {
-
             return response()->json([
-                'message' => 'Aluno deleted.',
+                'message' => 'Aluno excluído com sucesso.',
                 'deleted' => $deleted,
             ]);
         }
 
         return redirect()->back()->with('message', 'Aluno deleted.');
     }
+    
 }

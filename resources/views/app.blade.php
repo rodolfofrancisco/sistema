@@ -73,11 +73,22 @@
 			<script src="{{ asset('build/js/controllers/user/userView.js') }}"></script>
 			<script src="{{ asset('build/js/controllers/user/userRemove.js') }}"></script>
 			<script src="{{ asset('build/js/controllers/user/userPerfil.js') }}"></script>
+			
 			<script src="{{ asset('build/js/controllers/turma/turmaList.js') }}"></script>
+			<script src="{{ asset('build/js/controllers/turma/turmaNew.js') }}"></script>
+			<script src="{{ asset('build/js/controllers/turma/turmaEdit.js') }}"></script>
+			<script src="{{ asset('build/js/controllers/turma/turmaView.js') }}"></script>
+			<script src="{{ asset('build/js/controllers/turma/turmaRemove.js') }}"></script>
+
 			<script src="{{ asset('build/js/controllers/aluno/alunoList.js') }}"></script>
 			<script src="{{ asset('build/js/controllers/aluno/alunoNew.js') }}"></script>
+			<script src="{{ asset('build/js/controllers/aluno/alunoEdit.js') }}"></script>
+			<script src="{{ asset('build/js/controllers/aluno/alunoView.js') }}"></script>
+			<script src="{{ asset('build/js/controllers/aluno/alunoRemove.js') }}"></script>
+
 			<script src="{{ asset('build/js/controllers/questionario/questionarioList.js') }}"></script>
 			<script src="{{ asset('build/js/controllers/questionario/questionarioNew.js') }}"></script>
+			<script src="{{ asset('build/js/controllers/questionario/questionarioEdit.js') }}"></script>
 			<script src="{{ asset('build/js/controllers/pergunta/perguntaNew.js') }}"></script>
 			<script src="{{ asset('build/js/controllers/notificacao/notificacaoList.js') }}"></script>
 			<script src="{{ asset('build/js/controllers/notificacao/notificacaoNew.js') }}"></script>
@@ -87,6 +98,7 @@
 			<script src="{{ asset('build/js/services/turma.js') }}"></script>
 			<script src="{{ asset('build/js/services/aluno.js') }}"></script>
 			<script src="{{ asset('build/js/services/questionario.js') }}"></script>
+			<script src="{{ asset('build/js/services/pergunta.js') }}"></script>
 			<script src="{{ asset('build/js/services/notificacao.js') }}"></script>
 			<script src="{{ asset('build/js/services/oauthFixInterceptor.js') }}"></script>
 

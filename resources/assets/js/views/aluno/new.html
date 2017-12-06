@@ -18,6 +18,16 @@
                     <form name="form" role="form" method="POST" ng-submit="save()">
                         <div class="box-body">
                             <div class="row">
+                                <div class="col-md-12">
+                                    <div class="alert alert-danger" ng-show="error.error">
+                                        <strong>Whoops!</strong> Ocorrerarm erros.<br><br>
+                                        <div ng-repeat="message in error.message">
+                                            {{ message[0] }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-6 form-group" ng-class="{'has-error': !form.nome_completo.$valid && form.nome_completo.$touched}">
                                     <label>Nome <span class="required">*</span></label>
                                     <input type="text" class="form-control" name="nome_completo" ng-model="aluno.nome_completo" required>
@@ -36,16 +46,16 @@
                             <div class="row">
                                 <div class="col-md-6 form-group" ng-class="{'has-error': !form.email.$valid && form.email.$touched}">
                                     <label>E-mail <span class="required">*</span></label>
-                                    <input type="email" class="form-control" name="email" ng-model="user.email" required>
+                                    <input type="email" class="form-control" name="email" ng-model="aluno.email" required>
                                     <div ng-messages="form.email.$error" class="help-block" ng-show="form.email.$touched">
                                         <div ng-message="required">Campo Obrigatório</div>
                                         <div ng-message="email">E-mail inválido</div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 form-group" ng-class="{'has-error': !form.data_nascimento.$valid && form.data_nascimento.$touched}">
+                                <div class="col-md-6 form-group" ng-class="{'has-error': !form.data_nacimento.$valid && form.data_nacimento.$touched}">
                                     <label>Data de Nascimento <span class="required">*</span></label>
-                                    <input type="text" class="form-control" name="data_nascimento" ng-model="aluno.data_nascimento" alt="date" placeholder="00/00/00000" datepicker-popup="dd/MM/yyyy" is-open="showDataNascimento" close-text="Fechar" current-text="Hoje" clear-text="Limpar" ng-click="open()" required />
-                                    <div ng-messages="form.data_nascimento.$error" class="help-block" ng-show="form.data_nascimento.$touched">
+                                    <input type="text" class="form-control" name="data_nacimento" ng-model="aluno.data_nacimento" alt="date" placeholder="00/00/00000" required />
+                                    <div ng-messages="form.data_nacimento.$error" class="help-block" ng-show="form.data_nacimento.$touched">
                                         <div ng-message="required">Campo Obrigatório</div>
                                     </div>
                                 </div>
@@ -53,9 +63,8 @@
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <label>Sexo</label>
-                                    <select class="form-control" name="sexo" ng-model="aluno.sexo">
+                                    <select class="form-control" name="sexo" ng-model="aluno.sexo" ng-options="o.value as o.label for o in sexo">
                                         <option value="">Selecione...</option>
-                                        <option ng-repeat="option in sexo" ng-value="option.value">{{option.label}}</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6 form-group" ng-class="{'has-error': !form.cpf.$valid && form.cpf.$touched}">
@@ -82,9 +91,8 @@
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <label>Grau de Instrução</label>
-                                    <select class="form-control" name="grau_instrucao" ng-model="aluno.grau_instrucao">
+                                    <select class="form-control" name="grau_instrucao" ng-model="aluno.grau_instrucao" ng-options="o.value as o.label for o in grauInstrucao">
                                         <option value="">Selecione...</option>
-                                        <option ng-repeat="option in grauInstrucao" ng-value="option.value">{{option.label}}</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6 form-group" ng-class="{'has-error': !form.turmas_id.$valid && form.turmas_id.$touched}">

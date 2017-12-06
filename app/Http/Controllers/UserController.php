@@ -77,17 +77,18 @@ class UserController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         $result = $this->repository->find($id);
+        
+        if (request()->wantsJson()) {
+            if (isset($result['data']) && count($result['data']) > 0) {
+                $result = $result['data'];
+            }
+        
+            return response()->json($result);
+        }
 
-        /*if (isset($result['data']) && count($result['data'] > 0)) {
-            $result = [
-                'data' => array_shift($result['data'])
-            ];
-        }*/
-
-        return $result['data'];
+        return view('users.show', compact('result'));
     }
 
     /**

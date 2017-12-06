@@ -1,4 +1,4 @@
-body, h4, label, button, th, a {
+body, h4, label, button, th, a, h3, h5 {
   font-weight: 400!important;
   font-family: 'Montserrat',sans-serif!important;
 }
@@ -32,7 +32,8 @@ body .wrapper .main-header .navbar .navbar-custom-menu .nav li .dropdown-menu {
 .content-header .fa-mortar-board::before,
 .content-header .fa-graduation-cap::before,
 .content-header .fa-tasks::before,
-.content-header .fa-envelope::before {
+.content-header .fa-envelope::before,
+.content-header .fa-university::before {
   color: #da131b;
 }
 

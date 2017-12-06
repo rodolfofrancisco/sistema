@@ -22,9 +22,12 @@ Route::post('oauth/access_token', function() {
 Route::group(['middleware' => 'oauth'], function() {
     Route::get('user/authenticated', 'UserController@authenticated');
     Route::resource('user', 'UserController', ['except' => ['create', 'edit']]);
+    Route::get('turma/getAll', 'TurmasController@getAll');
+    Route::resource('turma', 'TurmasController', ['except' => ['create', 'edit']]);
+    Route::get('aluno/cep/{cep}', 'AlunosController@cep');
+    Route::resource('aluno', 'AlunosController', ['except' => ['create', 'edit']]);
+    Route::resource('questionario', 'QuestionariosController', ['except' => ['create', 'edit']]);
+    Route::post('questionario/{id}', 'QuestionariosController@update');
+    Route::resource('pergunta', 'PerguntasController', ['except' => ['create', 'edit']]);
 });
 
-Route::resource('turma', 'TurmasController', ['except' => ['create', 'edit']]);
-
-Route::resource('aluno', 'AlunosController', ['except' => ['create', 'edit']]);
-Route::get('aluno/cep/{cep}', 'AlunosController@cep');

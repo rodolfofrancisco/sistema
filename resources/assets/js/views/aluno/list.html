@@ -29,20 +29,20 @@
                             </thead>
                             <tbody>
                                 <tr dir-paginate="o in alunos | itemsPerPage: alunosPerPage" total-items="totalAlunos" current-page="pagination.current" >
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{o.nome_completo}}</td>
+                                    <td>{{o.matricula}}</td>
+                                    <td>{{o.email}}</td>
+                                    <td>{{o.cpf}}</td>
+                                    <td>{{ (turmas.data | filter : {'id': o.turmas_id})[0].descricao }}</td>
                                     <td>
                                         <ul class="actions">
                                             <li>
-                                                <a href="#/usuario" title="" data-toggle="tooltip" data-placement="top" data-original-title="Visualizar" data-ajax="normal">
+                                                <a ng-href="#/aluno/{{o.id}}/view" title="Visualizar">
                                                     <i class="fa fa-eye"></i> 
                                                 </a>
                                             </li>
                                             <li>
-                                                <a ng-href="#/usuario/{{o.id}}/edit" title="Editar" class="text-warning">
+                                                <a ng-href="#/aluno/{{o.id}}/edit" title="Editar" class="text-warning">
                                                     <i class="fa fa-pencil"></i>
                                                 </a>
                                             </li>

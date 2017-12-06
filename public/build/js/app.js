@@ -8,6 +8,12 @@ angular.module('app.services', ['ngResource'])
 app.provider('appConfig', ['$httpParamSerializerProvider', function($httpParamSerializerProvider) {
     var config = {
         baseUrl: 'http://localhost:8000',
+        pergunta: {
+            tipo: [
+                {value: 1, label: 'Resposta Única'},
+                {value: 2, label: 'Resposta Múltipla'}                
+            ]
+        },
         turma: {
             nivel: [
                 {value: 1, label: 'Básico'},
@@ -153,6 +159,22 @@ app.config(['$routeProvider', '$httpProvider', 'OAuthProvider', 'OAuthTokenProvi
             controller: 'TurmaListController',
             title: 'Turmas'
         })
+        .when('/turma/new', {
+            templateUrl: 'build/views/turma/new.html',
+            controller: 'TurmaNewController'
+        })
+        .when('/turma/:id/edit', {
+            templateUrl: 'build/views/turma/edit.html',
+            controller: 'TurmaEditController'
+        })
+        .when('/turma/:id/view', {
+            templateUrl: 'build/views/turma/view.html',
+            controller: 'TurmaViewController'
+        })
+        .when('/turma/:id/remove', {
+            templateUrl: 'build/views/turma/remove.html',
+            controller: 'TurmaRemoveController'
+        })
         .when('/aluno', {
             templateUrl: 'build/views/aluno/list.html',
             controller: 'AlunoListController',
@@ -162,6 +184,18 @@ app.config(['$routeProvider', '$httpProvider', 'OAuthProvider', 'OAuthTokenProvi
             templateUrl: 'build/views/aluno/new.html',
             controller: 'AlunoNewController'
         })
+        .when('/aluno/:id/edit', {
+            templateUrl: 'build/views/aluno/edit.html',
+            controller: 'AlunoEditController'
+        })
+        .when('/aluno/:id/view', {
+            templateUrl: 'build/views/aluno/view.html',
+            controller: 'AlunoViewController'
+        })
+        .when('/aluno/:id/remove', {
+            templateUrl: 'build/views/aluno/remove.html',
+            controller: 'AlunoRemoveController'
+        })
         .when('/questionario', {
             templateUrl: 'build/views/questionario/list.html',
             controller: 'QuestionarioListController',
@@ -170,6 +204,10 @@ app.config(['$routeProvider', '$httpProvider', 'OAuthProvider', 'OAuthTokenProvi
         .when('/questionario/new', {
             templateUrl: 'build/views/questionario/new.html',
             controller: 'QuestionarioNewController'
+        })
+        .when('/questionario/:id/edit', {
+            templateUrl: 'build/views/questionario/edit.html',
+            controller: 'QuestionarioEditController'
         })
         .when('/notificacao', {
             templateUrl: 'build/views/notificacao/list.html',

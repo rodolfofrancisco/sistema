@@ -1,5 +1,5 @@
 angular.module('app.controllers')
-.controller('QuestionarioListController', ['$scope', 'Questionario', '$modal', 'appConfig', function($scope, Aluno, $modal, appConfig) {
+.controller('QuestionarioListController', ['$scope', 'Questionario', '$modal', 'appConfig', function($scope, Questionario, $modal, appConfig) {
     $scope.questionarios = []
     $scope.totalQuestionarios = 0
     $scope.questionariosPerPage = 15
@@ -14,10 +14,14 @@ angular.module('app.controllers')
     
     function getResultsPage(pageNumber) {
         $scope.questionarios = []
-        /*Turma.query({page: pageNumber}, function(data) {
-            $scope.turmas = data.data
-            $scope.totalTurmas = data.meta.pagination.total
-        })*/
+        Questionario.query({page: pageNumber}, function(data) {
+            $scope.questionarios = data.data
+            if (data.meta !== undefined) {
+                $scope.totalQuestionarios = data.meta.pagination.total
+            } else {
+                $scope.totalQuestionarios = data.data.length
+            }
+        })
     }
 
     $scope.remove = function(id) {

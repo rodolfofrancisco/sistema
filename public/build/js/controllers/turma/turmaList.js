@@ -16,13 +16,17 @@ angular.module('app.controllers')
     function getResultsPage(pageNumber) {
         Turma.query({page: pageNumber}, function(data) {
             $scope.turmas = data.data
-            $scope.totalTurmas = data.meta.pagination.total
+            if (data.meta !== undefined) {
+                $scope.totalTurmas = data.meta.pagination.total
+            } else {
+                $scope.totalTurmas = data.data.length
+            }
         })
     }
 
     $scope.remove = function(id) {
         var modalInstance = $modal.open({
-            templateUrl: 'build/views/tumra/remove.html',
+            templateUrl: 'build/views/turma/remove.html',
             controller: 'TurmaRemoveController',
             backdrop  : 'static',
             keyboard  : false,

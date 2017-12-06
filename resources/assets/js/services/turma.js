@@ -13,6 +13,10 @@ angular.module('app.services')
         authenticated: {
             url: appConfig.baseUrl + '/user/authenticated',
             method: 'GET'
+        },
+        getAll: {
+            url: appConfig.baseUrl + '/turma/getAll',
+            method: 'GET'
         }
     })
 }])

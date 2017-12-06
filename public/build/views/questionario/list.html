@@ -16,7 +16,7 @@
             <div class="col-xs-12">
                 <div class="box box-danger">
                     <div class="box-body">
-                        <table class="table table-bordered" id="tableAlunos" ui-jq="dataTable">
+                        <table class="table table-bordered" id="tableQuestionarios" ui-jq="dataTable">
                             <thead>
                                 <tr>
                                     <th>Título</th>                                   
@@ -25,16 +25,16 @@
                             </thead>
                             <tbody>
                                 <tr dir-paginate="o in questionarios | itemsPerPage: questionariosPerPage" total-items="totalQuestionarios" current-page="pagination.current" >
-                                    <td></td>
+                                    <td>{{ o.titulo }}</td>
                                     <td>
                                         <ul class="actions">
                                             <li>
-                                                <a href="#/usuario" title="" data-toggle="tooltip" data-placement="top" data-original-title="Visualizar" data-ajax="normal">
+                                                <a ng-href="#/questionario/{{o.id}}/view" title="Visualizar">
                                                     <i class="fa fa-eye"></i> 
                                                 </a>
                                             </li>
                                             <li>
-                                                <a ng-href="#/usuario/{{o.id}}/edit" title="Editar" class="text-warning">
+                                                <a ng-href="#/questionario/{{o.id}}/edit" title="Editar" class="text-warning">
                                                     <i class="fa fa-pencil"></i>
                                                 </a>
                                             </li>

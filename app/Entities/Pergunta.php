@@ -24,7 +24,11 @@ class Pergunta extends Model implements Transformable {
     ];
     
     public function questionarios(){
-    return $this->belongsTo('App\Entities\Questionario');
-}
+        return $this->belongsTo('App\Entities\Questionario');
+    }
+    
+    public function respostas(){
+        return $this->hasMany('App\Entities\Resposta');
+    }
 
 }

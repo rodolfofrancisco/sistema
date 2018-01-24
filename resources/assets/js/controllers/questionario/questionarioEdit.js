@@ -21,6 +21,40 @@ angular.module('app.controllers')
         })
     }
 
+    $scope.editQuestion = function(id, questionarioId) {
+        var modalInstance = $modal.open({
+            templateUrl: 'build/views/pergunta/edit.html',
+            controller: 'PerguntaEditController',
+            backdrop  : 'static',
+            keyboard  : false,
+            resolve: {
+                perguntaId: function () {
+                    return id
+                },
+                questionarioId: function () {
+                    return questionarioId
+                }
+            }
+        })
+    }
+
+    $scope.deleteQuestion = function(id, questionarioId) {
+        var modalInstance = $modal.open({
+            templateUrl : 'build/views/pergunta/remove.html',
+            controller  : 'PerguntaRemoveController',
+            backdrop    : 'static',
+            keyboard    : false,
+            resolve     : {
+                removeId : function () {
+                    return id
+                },
+                questionarioId : function () {
+                    return questionarioId
+                }
+            }
+        })
+    }
+
     $scope.cancel = function () {
         $modal.dismiss()
     };

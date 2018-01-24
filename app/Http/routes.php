@@ -29,5 +29,6 @@ Route::group(['middleware' => 'oauth'], function() {
     Route::resource('questionario', 'QuestionariosController', ['except' => ['create', 'edit']]);
     Route::post('questionario/{id}', 'QuestionariosController@update');
     Route::resource('pergunta', 'PerguntasController', ['except' => ['create', 'edit']]);
+    Route::post('pergunta/{id}', 'PerguntasController@update');
 });
 

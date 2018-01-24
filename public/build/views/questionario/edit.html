@@ -56,8 +56,13 @@
                                                         <td style="width: 30px;">
                                                             <ul class="actions">
                                                                 <li>
-                                                                    <a ng-href="#/questionario/{{o.id}}/edit" title="Editar" class="text-warning">
+                                                                    <a ng-click="editQuestion(o.id, questionario.id)" title="Editar" class="text-warning">
                                                                         <i class="fa fa-pencil"></i>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a ng-click="deleteQuestion(o.id, questionario.id)" title="Excluir" class="text-danger">
+                                                                        <i class="fa fa-remove"></i>
                                                                     </a>
                                                                 </li>
                                                             </ul>

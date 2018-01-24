@@ -14,6 +14,10 @@ class PerguntaValidator extends LaravelValidator
             'tipo'            => 'required',
             'questionario_id' => 'required',
         ],
-        ValidatorInterface::RULE_UPDATE => [],
+        ValidatorInterface::RULE_UPDATE => [
+            'descricao'       => 'required|max:255',
+            'tipo'            => 'required',
+            'questionario_id' => 'required',
+        ],
    ];
 }

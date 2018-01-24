@@ -89,7 +89,11 @@
 			<script src="{{ asset('build/js/controllers/questionario/questionarioList.js') }}"></script>
 			<script src="{{ asset('build/js/controllers/questionario/questionarioNew.js') }}"></script>
 			<script src="{{ asset('build/js/controllers/questionario/questionarioEdit.js') }}"></script>
+			
 			<script src="{{ asset('build/js/controllers/pergunta/perguntaNew.js') }}"></script>
+			<script src="{{ asset('build/js/controllers/pergunta/perguntaEdit.js') }}"></script>
+			<script src="{{ asset('build/js/controllers/pergunta/perguntaRemove.js') }}"></script>
+
 			<script src="{{ asset('build/js/controllers/notificacao/notificacaoList.js') }}"></script>
 			<script src="{{ asset('build/js/controllers/notificacao/notificacaoNew.js') }}"></script>
 

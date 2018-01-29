@@ -163,12 +163,11 @@ class QuestionariosController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
+        $questionario = Questionario::with('Perguntas')->where('questionario.id', $id)->first();
         $deleted = $this->repository->delete($id);
 
         if (request()->wantsJson()) {
-
             return response()->json([
                 'message' => 'Questionario deleted.',
                 'deleted' => $deleted,
@@ -177,4 +176,5 @@ class QuestionariosController extends Controller {
 
         return redirect()->back()->with('message', 'Questionario deleted.');
     }
+
 }

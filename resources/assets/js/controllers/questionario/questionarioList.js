@@ -38,5 +38,15 @@ angular.module('app.controllers')
         })
     }
 
+    $scope.new = function(id) {
+        var modalInstance = $modal.open({
+            templateUrl: 'build/views/questionario/new.html',
+            controller: 'QuestionarioNewController',
+            backdrop  : 'static',
+            keyboard  : false
+        })
+    }
+
     getResultsPage(1)
+
 }])

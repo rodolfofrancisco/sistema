@@ -1,5 +1,5 @@
 body, h4, label, button, th, a, h3, h5 {
-  font-weight: 400!important;
+  /*font-weight: 400!important; */
   font-family: 'Montserrat',sans-serif!important;
 }
 
@@ -23,10 +23,10 @@ body .wrapper .main-header .navbar .navbar-custom-menu .nav li .dropdown-menu {
   border: 0;
   width: 175px !important;
 }
-
+/*
 .content-wrapper {
   background-color: #f5f4ec!important;
-}
+} */
 
 .content-header .fa-user-circle::before,
 .content-header .fa-mortar-board::before,

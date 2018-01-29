@@ -209,6 +209,10 @@ app.config(['$routeProvider', '$httpProvider', 'OAuthProvider', 'OAuthTokenProvi
             templateUrl: 'build/views/questionario/edit.html',
             controller: 'QuestionarioEditController'
         })
+        .when('/questionario/:id/remove', {
+            templateUrl: 'build/views/questionario/remove.html',
+            controller: 'QuestionarioRemoveController'
+        })
         .when('/notificacao', {
             templateUrl: 'build/views/notificacao/list.html',
             controller: 'NotificacaoListController',
